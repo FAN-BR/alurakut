@@ -1,6 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+// import Image from 'next/image'
 import NextLink from 'next/link';
+// import fankutPic02 from "../img/fankut02.png"
+
 
 const BASE_URL = 'http://alurakut.vercel.app/';
 const v = '1';
@@ -24,7 +27,8 @@ export function FankutMenu({ githubUser }) {
   return (
     <FankutMenu.Wrapper isMenuOpen={isMenuOpen}>
       <div className="container">
-        <FankutMenu.Logo src={`${BASE_URL}/logo.svg`} />
+        <FankutMenu.Logo src="img/fankut02.png" />
+        {/* <Image src={fankutPic02} width={120} height={34} className="fankutLogo" /> */}
 
         <nav style={{ flex: 1 }}>
           {[{ name: 'Inicio', slug: '/'}, {name: 'Amigos', slug: '/amigos'}, {name: 'Comunidades', slug: '/comunidades'}].map((menuItem) => (
@@ -71,6 +75,13 @@ FankutMenu.Wrapper = styled.header`
     transform: ${({ isMenuOpen }) => isMenuOpen ? 'translateY(0)' : 'translateY(calc(-100% - 48px))'};
     @media(min-width: 860px) {
       display: none;
+    }
+    .fankutLogo {
+      background-color: #ffffff;
+      max-height: 34px;
+      padding: 9px 14px;
+      border-radius: 1000px;
+      height: 34px;
     }
     > div {
       max-width: 400px;
@@ -168,22 +179,26 @@ FankutMenu.Logo = styled.img`
 `;
 
 function FankutMenuProfileSidebar({ githubUser }) {
-  return (
-    <div className="fankutMenuProfileSidebar">
-      <div>
-        <img src={`https://github.com/${githubUser}.png`} style={{ borderRadius: '8px' }} />
-        <hr />
-        <p>
-          <a className="boxLink" href={`/user/${githubUser}`}>
-            @{githubUser}
-          </a>
-        </p>
-        <hr />
+  if (githubUser) {
+    return (
+      <div className="fankutMenuProfileSidebar">
+        <div>
+          <img src={`https://github.com/${githubUser}.png`} style={{ borderRadius: '8px' }} />
+          <hr />
+          <p>
+            <a className="boxLink" href={`/user/${githubUser}`}>
+              @{githubUser}
+            </a>
+          </p>
+          <hr />
 
-        <FankutProfileSidebarMenuDefault />
+          <FankutProfileSidebarMenuDefault />
+        </div>
       </div>
-    </div>
-  )
+    )
+  } else {
+    return (<div></div>)
+  }
 }
 
 // ================================================================================================================
@@ -269,7 +284,7 @@ export function OrkutNostalgicIconSet(props) {
         { name: 'Legal', slug: 'legal', icon: 'cool' },
         { name: 'Sexy', slug: 'sexy', icon: 'heart' },
       ].map(({ name, slug, icon }) => {
-        const total = props[slug] ? props[slug] : 2;
+        const total = props[slug] ? props[slug] : 3;
         return (
           <li key={`orkut__icon_set__${slug}`}>
             <span className="OrkutNostalgicIconSet__title">
