@@ -520,5 +520,4 @@ export const FankutStyles = css`
   }
 
   ${FankutLoginScreen}
-  
 `;

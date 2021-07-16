@@ -1,5 +1,5 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
-import { FankutStyles } from '../src/lib/fankutCommons'
+import { FankutStyles } from '../src/lib/FankutCommons'
 
 const GlobalStyle = createGlobalStyle`
 // Reset CSS
